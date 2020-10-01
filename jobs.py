@@ -17,9 +17,14 @@ class Job:
         bs = BeautifulSoup(seek_html.read(), "html.parser")
         bs_2 = BeautifulSoup(indeed_html.read(), "html.parser")
         raw_data_seek = (bs.find("strong", {"data-automation": "totalJobsCount"}))
-        raw_data_1 = int((raw_data_seek.text).replace(",", ""))
         raw_data_indeed = (bs_2.find("div", {"id": "searchCountPages"}))
-        raw_data_2 = int(((raw_data_indeed.text.strip())[10:-5]).replace(",", ""))
+        try:
+            raw_data_1 = int((raw_data_seek.text).replace(",", ""))
+            raw_data_2 = int(((raw_data_indeed.text.strip())[10:-5]).replace(",", ""))
+        except:
+            raw_data_1 = 0
+            raw_data_2 = 0
+
         
         job_average = (raw_data_1 + raw_data_2)/2
         self.job_average = job_average

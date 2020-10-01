@@ -6,7 +6,7 @@ from job_statistics import Stats
 list_of_languagesss = ['python', 'javascript', 'html', 'css', 'sql', 'java', 'rust', 'typescript']
     
 
-def presenter()-> str:
+def presenter():
     table_info = []
     for lang in list_of_languagesss:
         prog_lang = Stats(lang)

@@ -1,5 +1,4 @@
 from data import Data
-from statistics import mean
 
 colours = {"Black": "\u001b[30m",
 "Red": "\u001b[31m",
@@ -10,8 +9,7 @@ colours = {"Black": "\u001b[30m",
 }
 
 
-class Stats: 
-
+class Stats:
     
     def __init__(self,name: str ):
         self.name = name
