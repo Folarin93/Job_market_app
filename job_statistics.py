@@ -26,13 +26,13 @@ class Stats:
         
         
     def net_change(self) -> str:
-        self.net_value = (self.today_jobs - self.previous_day_jobs)
+        self.net_value = float(self.today_jobs - self.previous_day_jobs)
         if self.net_value < 0:
             return (colours["Red"]+f"{self.net_value}"+colours["Reset"])
         else:
-            return (colours["Green"]+f"{self.net_value}"+colours["Reset"])
+            return (colours["Green"]+f"+ {self.net_value}"+colours["Reset"])
         
-    def percent_change(self):
+    def percent_change(self)-> str:
         self.percentage =(self.net_value/self.today_jobs)*100
         self.percent_net_value = float("{:.2f}".format(self.percentage))
         if self.percent_net_value < 0:
@@ -51,7 +51,7 @@ class Stats:
             self.month_net_value = "N/A"
             return self.month_net_value
         
-    def month_percent_change(self):
+    def month_percent_change(self)-> str:
         self.month_net_change()
         if self.month_net_value == "N/A":
             return self.month_net_value

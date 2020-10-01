@@ -5,13 +5,13 @@ from datetime import date
 from data import Data
 
 class Job: 
-    
-    def __init__(self,lang_name):
+    def __init__(self,lang_name: str):
         self.lang_name = lang_name
         self.date_dictionary = {}
         self.job_dictionary = {self.lang_name:{}}
-       
-    def job_seeker(self):
+        
+    """Method for webscraping and data cleansing using beautiful soup"""
+    def job_seeker(self) -> float:
         seek_html = urlopen(f"https://www.seek.com.au/jobs?keywords={self.lang_name}")
         indeed_html = urlopen(f"https://au.indeed.com/jobs?q={self.lang_name}&l=")
         bs = BeautifulSoup(seek_html.read(), "html.parser")
@@ -25,7 +25,7 @@ class Job:
         self.job_average = job_average
         return self.job_average
         
-    
+    """Method for opening and appending to Json data file using methods from data.py"""
     def data_update_process(self):
         lang_data_file = Data.load("language_data.json")
         self.date_dictionary.update({str(date.today()):self.job_average})

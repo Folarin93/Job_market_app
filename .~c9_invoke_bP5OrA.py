@@ -1,7 +1,7 @@
 from languages import list_of_languages
 from jobs import Job 
 
-"""For Loop for updating json file holding jobs for each programming language """
+"""For Loop to update Json data file for """
 for lang in list_of_languages:
     language = Job(lang)
     language.job_seeker()
