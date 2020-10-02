@@ -15,4 +15,5 @@ def presenter():
     table = tabulate(table_info, headers = ["Name","Today's Job Postings", "Net Change", "% Change","1 Month", "Last Updated"] )
     return (table)
 
+
 print(presenter())

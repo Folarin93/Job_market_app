@@ -17,18 +17,26 @@ class Stats:
         self.data = data_load[self.name]
         self.recent_date = list(self.data.keys())[-1]
         self.today_jobs = list(self.data.values())[-1]
-        self.previous_day_jobs = list(self.data.values())[-2]
         self.day_in_month = int(self.recent_date[-5:-3])
         self.table_content = [self.name, self.today_jobs,self.net_change(),self.percent_change(), self.month_percent_change(), self.recent_date]
         
         
         
     def net_change(self) -> str:
-        self.net_value = float(self.today_jobs - self.previous_day_jobs)
-        if self.net_value < 0:
-            return (colours["Red"]+f"{self.net_value}"+colours["Reset"])
-        else:
-            return (colours["Green"]+f"+ {self.net_value}"+colours["Reset"])
+        try:
+            self.previous_day_jobs = list(self.data.values())[-2]
+            self.net_value = float(self.today_jobs - self.previous_day_jobs)
+            if self.net_value < 0:
+                return (colours["Red"]+f"{self.net_value}"+colours["Reset"])
+            else:
+                return (colours["Green"]+f"+ {self.net_value}"+colours["Reset"])
+        except:
+            self.previous_day_jobs = 0
+            self.net_value = float(self.today_jobs - self.previous_day_jobs)
+            if self.net_value < 0:
+                return (colours["Red"]+f"{self.net_value}"+colours["Reset"])
+            else:
+                return (colours["Green"]+f"+ {self.net_value}"+colours["Reset"])
         
     def percent_change(self)-> str:
         self.percentage =(self.net_value/self.today_jobs)*100

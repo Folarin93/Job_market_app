@@ -1,1 +1,1 @@
-list_of_languages = ['python', 'javascript', 'html', 'css', 'sql', 'java', 'rust', 'typescript', 'kotlin', 'go', 'julia', 'dart', 'swift', 'sql', 'scala', 'haskell', 'r programming', 'java', 'ruby', 'PHP', 'C programming', 'VBA', 'Perl']
+list_of_languages = ['python', 'javascript', 'html', 'css', 'sql', 'java', 'rust', 'typescript', 'kotlin', 'go', 'julia', 'dart', 'swift', 'sql', 'scala', 'haskell', 'R-Programming', 'java', 'ruby', 'PHP', 'C-programming', 'VBA', 'Perl', 'c++']
