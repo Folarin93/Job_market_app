@@ -13,3 +13,31 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.8
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Tests
+        run: |
+          python -m unittest discover tests/
+  deployment:
+    needs: test_suite
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fresh clone & repo install
+        uses: appleboy/ssh-action@master
+        with:
+          host: 54.159.228.149
+          username: github-actions
+          key: ${{secrets.SSH_KEY}}
+          port: 22
+          script: |
+            rm -rf Job_market_app
+            git clone https://github.com/Folarin93/Job_market_app.git
+            cd Job_market_app
+            python3.8 -m venv /home/github-actions/Job_market_app/venv
+            /home/github-actions/Job_market_app/venv/bin/pip install -r requirements.txt
+            
+            
+
+
